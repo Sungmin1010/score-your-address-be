@@ -1,0 +1,14 @@
+{
+  "properties" : [
+    {
+      "name" : "git.api.base.url",
+      "type" : "java.lang.String"
+    },{
+      "name" : "kakao.api.key",
+      "type" : "java.lang.String"
+    },{
+      "name" : "kakao.api.base.url",
+      "type" : "java.lang.String"
+    }
+  ]
+}
