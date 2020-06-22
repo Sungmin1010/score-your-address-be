@@ -88,7 +88,7 @@ public class ScoreServiceImple implements ScoreService{
             //return scoreResponseDTOFlux.toStream();
         }).collect(Collectors.toList());
         //2번방법
-        List<ScoreResponseDTO> scoreResponseDTOList = new ArrayList<>();
+        /*List<ScoreResponseDTO> scoreResponseDTOList = new ArrayList<>();
         scoreDTOs.forEach( c -> {
             ScoreDTO scoreDTO = (ScoreDTO)c;
             ScoreResponseDTO scoreResponseDTO = new ScoreResponseDTO();
@@ -96,7 +96,15 @@ public class ScoreServiceImple implements ScoreService{
             scoreResponseDTO.setCategory(scoreDTO.getCategory());
             scoreResponseDTO.makeScore(scoreDTO.getRadius());
             scoreResponseDTOList.add(scoreResponseDTO);
-        });
+        });*/
+        List<ScoreResponseDTO> scoreResponseDTOList = new ArrayList<>();
+        for(ScoreDTO s:scoreDTOs){
+            ScoreResponseDTO scoreResponseDTO = new ScoreResponseDTO();
+            scoreResponseDTO.setTotal_count(s.getMeta().getTotal_count());
+            scoreResponseDTO.setCategory(s.getCategory());
+            scoreResponseDTO.makeScore((s.getRadius()));
+            scoreResponseDTOList.add(scoreResponseDTO);
+        }
 
         return scoreResponseDTOList;
 

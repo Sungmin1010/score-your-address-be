@@ -11,11 +11,14 @@ import java.util.List;
 @Setter
 public class ScoreRequestDTO {
 
-    private List<String> category_group;
+        private List<String> category_group;
 
-    private String x;
+        private String x;
 
-    private String y;
+        private String y;
 
-    private int radius;
+        private int radius;
+
+
+
 }
