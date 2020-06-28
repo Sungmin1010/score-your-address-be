@@ -1,6 +1,8 @@
 package com.score.address.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.score.address.api.response.ListResponseData;
+import com.score.address.api.service.ResponseService;
 import com.score.address.domain.*;
 import com.score.address.service.ScoreService;
 import com.score.address.service.ScoreServiceImple;
@@ -27,10 +29,11 @@ import java.util.stream.Stream;
 public class ScoreController {
 
     private ScoreService scoreService;
+    private ResponseService responseService;
 
     @PostMapping("/score")
-    public ResponseEntity<ResponseDTO> postScore(@RequestBody RequestDTO requestDTO){
-        try{//TODO ControllerAdviser 예외처리
+    public ListResponseData<ScoreResponseDTO> postScore(@RequestBody RequestDTO requestDTO){
+
             ScoreRequestDTO scoreRequestDTO = requestDTO.getData();
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();
@@ -39,12 +42,8 @@ public class ScoreController {
 
             stopWatch.stop();
             System.out.println(stopWatch.prettyPrint());
-            return new ResponseEntity<>(new ResponseDTO(200, categoryTotalCount), HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
 
-
+            return responseService.getListResult(categoryTotalCount);
 
     }
 
